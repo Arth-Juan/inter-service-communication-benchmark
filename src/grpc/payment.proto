@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package payment;
+
+// Serviço que cada microserviço expõe
+service PaymentStage {
+  rpc Process (PaymentRequest) returns (PaymentResponse);
+  rpc Validate (PaymentRequest) returns (PaymentResponse);
+  rpc Antifraud (PaymentRequest) returns (PaymentResponse);
+  rpc Authorize (PaymentRequest) returns (PaymentResponse);
+  rpc Settle (PaymentRequest) returns (PaymentResponse);
+}
+// Pedido de pagamento
+message PaymentRequest {
+  string orderId = 1;
+}
+
+// Resposta
+message PaymentResponse {
+  string status = 1;
+}

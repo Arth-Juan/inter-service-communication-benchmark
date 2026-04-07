@@ -1,0 +1,36 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/rest/rest-service.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:grpc:watch": "concurrently \"cross-env PORT=50051 NAME=validation tsx watch src/grpc/grpc-service.ts\" \"cross-env PORT=50052 NAME=antifraud tsx watch src/grpc/grpc-service.ts\" \"cross-env PORT=50053 NAME=authorization tsx watch src/grpc/grpc-service.ts\" \"cross-env PORT=50054 NAME=settle tsx watch src/grpc/grpc-service.ts\" \"cross-env PORT=60000 NAME=payment-service tsx watch src/grpc/payment-service.ts\"",
+    "start:rest:watch": "concurrently \"cross-env PORT=3001 ENDPOINT=validate NAME=validation tsx watch src/rest/baseRestService.ts\" \"cross-env PORT=3002 ENDPOINT=antifraud NAME=antifraud tsx watch src/rest/baseRestService.ts\" \"cross-env PORT=3003 ENDPOINT=authorize NAME=authorization tsx watch src/rest/baseRestService.ts\" \"cross-env PORT=3004 ENDPOINT=settle NAME=settlement tsx watch src/rest/baseRestService.ts\" \"tsx watch src/rest/rest-service.ts\"",
+    "start:grpc": "concurrently \"cross-env PORT=50051 NAME=validation tsx src/grpc/grpc-service.ts\" \"cross-env PORT=50052 NAME=antifraud tsx src/grpc/grpc-service.ts\" \"cross-env PORT=50053 NAME=authorization tsx src/grpc/grpc-service.ts\" \"cross-env PORT=50054 NAME=settle tsx src/grpc/grpc-service.ts\" \"cross-env PORT=60000 NAME=payment-service tsx src/grpc/payment-service.ts\"",
+    "start:rest": "concurrently \"cross-env PORT=3001 ENDPOINT=validate NAME=validation tsx src/rest/baseRestService.ts\" \"cross-env PORT=3002 ENDPOINT=antifraud NAME=antifraud tsx src/rest/baseRestService.ts\" \"cross-env PORT=3003 ENDPOINT=authorize NAME=authorization tsx src/rest/baseRestService.ts\" \"cross-env PORT=3004 ENDPOINT=settle NAME=settlement tsx src/rest/baseRestService.ts\" \"tsx src/rest/rest-service.ts\"",
+    "start:rabbit": "concurrently \"cross-env QUEUE=validate_queue NEXT_QUEUE=antifraud_queue NAME=validation npx tsx src/rabbit/baseRabbitService.ts\" \"cross-env QUEUE=antifraud_queue NEXT_QUEUE=authorize_queue NAME=antifraud npx tsx src/rabbit/baseRabbitService.ts\" \"cross-env QUEUE=authorize_queue NEXT_QUEUE=settle_queue NAME=authorization npx tsx src/rabbit/baseRabbitService.ts\" \"cross-env QUEUE=settle_queue NAME=settlement npx tsx src/rabbit/baseRabbitService.ts\" \"npx tsx src/rabbit/brokerService.ts\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/amqplib": "^0.10.8",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.2.2",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "nodemon": "^3.1.11",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.14.3",
+    "@grpc/proto-loader": "^0.8.0",
+    "amqplib": "^0.10.9",
+    "express": "^5.2.1"
+  }
+}
