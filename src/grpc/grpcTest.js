@@ -78,38 +78,41 @@
 // }
 
 import grpc from 'k6/net/grpc';
-import { check, sleep } from 'k6';
+import { Rate } from 'k6/metrics';
 
-// Instância global do cliente
 const client = new grpc.Client();
-
-// Carrega o seu arquivo .proto (certifique-se que o caminho está correto)
 client.load(['.'], 'payment.proto');
+
+const FAILURE_THRESHOLD_MS = Number(__ENV.FAILURE_THRESHOLD_MS || '1000');
+
+const benchmarkTransportFailureRate = new Rate('benchmark_transport_failure_rate');
+const benchmarkSlowFailureRate = new Rate('benchmark_slow_failure_rate');
+const benchmarkTotalFailureRate = new Rate('benchmark_total_failure_rate');
 
 
 export default () => {
-  // Conecta ao seu microserviço Node.js
   if (__ITER == 0) {
     client.connect('localhost:60000', {
-      plaintext: true, // Geralmente true para ambientes de desenvolvimento/local
+      plaintext: true,
     });
   }
 
   const data = { orderId: '123' };
-  let response;
-  // Exemplo chamando o estágio de Processamento
-  try{
-    response = client.invoke('payment.PaymentStage/Process', data);} catch (e) {
-    console.error('Erro na chamada gRPC:', e);
-      client.connect('localhost:60000', {
-      plaintext: true, // Geralmente true para ambientes de desenvolvimento/local
-    });
-    response = client.invoke('payment.PaymentStage/Process', data)
+  const startedAt = Date.now();
+  let response = null;
+  let transportFailed = false;
+
+  try {
+    response = client.invoke('payment.PaymentStage/Process', data);
+    transportFailed = response.status !== grpc.StatusOK || response.message?.status !== 'ok';
+  } catch (error) {
+    transportFailed = true;
   }
 
-  // Validação da resposta
-  check(response, { 'status is OK': (r) => r && r.message.status === 'ok' });
+  const duration = Date.now() - startedAt;
+  const slowFailed = duration > FAILURE_THRESHOLD_MS;
 
-  // Fecha a conexão para liberar recursos do k6
-    //client.close();
+  benchmarkTransportFailureRate.add(transportFailed);
+  benchmarkSlowFailureRate.add(slowFailed);
+  benchmarkTotalFailureRate.add(transportFailed || slowFailed);
 };

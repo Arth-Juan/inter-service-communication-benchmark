@@ -8,6 +8,7 @@ Use the same per-stage concurrency cap in REST, gRPC and RabbitMQ.
 - Business logic per stage: 50ms
 - Test duration per point: 1m
 - VU levels: 50, 200, 400, 800, 1200, 1600
+- Failure threshold: requests above 1000ms count as SLO failures
 
 ## Matrix to run
 Run every protocol with these `STAGE_CONCURRENCY` values:
@@ -25,6 +26,14 @@ For each concurrency value C in {10,25,50,100}:
 STAGE_CONCURRENCY=C ./run-rest-benchmark.sh
 STAGE_CONCURRENCY=C ./run-grpc-benchmark.sh
 STAGE_CONCURRENCY=C ./run-rabbit-benchmark.sh
+```
+
+To change the latency threshold used to classify a slow request as failure:
+
+```bash
+FAILURE_THRESHOLD_MS=1000 STAGE_CONCURRENCY=C ./run-rest-benchmark.sh
+FAILURE_THRESHOLD_MS=1000 STAGE_CONCURRENCY=C ./run-grpc-benchmark.sh
+FAILURE_THRESHOLD_MS=1000 STAGE_CONCURRENCY=C ./run-rabbit-benchmark.sh
 ```
 
 ## How simultaneous requests are capped
