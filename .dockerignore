@@ -1,0 +1,9 @@
+results/
+node_modules/
+*.csv
+*.txt
+*.md
+*.sh
+.git/
+# Keep package.json/package-lock.json in build context for npm ci.
+# Benchmark raw outputs are already covered by results/.

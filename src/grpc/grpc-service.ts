@@ -1,25 +1,4 @@
-// import grpc from '@grpc/grpc-js';
-// import protoLoader from '@grpc/proto-loader';
-// import { sleep } from '../utils.ts';
 
-// const PORT = process.env.PORT;
-// const NAME = process.env.NAME || 'stage';
-
-// const packageDef = protoLoader.loadSync('./src/grpc/payment.proto');
-// const grpcObj = grpc.loadPackageDefinition(packageDef) as any;
-// const server = new grpc.Server();
-
-// server.addService(grpcObj.payment.PaymentStage.service, {
-//   Process: async (call: any, callback: any) => {
-//     console.log(`${NAME} received request for order ${call.request.orderId}`);
-//     await sleep(50);
-//     callback(null, { status: 'ok' });
-//   },
-// });
-
-// server.bindAsync(`0.0.0.0:${PORT}`, grpc.ServerCredentials.createInsecure(), () => {
-//   console.log(`${NAME} gRPC server running on port ${PORT}`);
-// });
 import grpc from '@grpc/grpc-js';
 import protoLoader from '@grpc/proto-loader';
 import { AsyncSemaphore, sleep } from '../utils.ts';

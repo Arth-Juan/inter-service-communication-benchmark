@@ -1,0 +1,194 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: bench-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+  rest-validation:
+    build: .
+    command: ["npx", "tsx", "src/rest/baseRestService.ts"]
+    environment:
+      PORT: "3001"
+      ENDPOINT: "validate"
+      NAME: "validation"
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+
+  rest-antifraud:
+    build: .
+    command: ["npx", "tsx", "src/rest/baseRestService.ts"]
+    environment:
+      PORT: "3002"
+      ENDPOINT: "antifraud"
+      NAME: "antifraud"
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+
+  rest-authorization:
+    build: .
+    command: ["npx", "tsx", "src/rest/baseRestService.ts"]
+    environment:
+      PORT: "3003"
+      ENDPOINT: "authorize"
+      NAME: "authorization"
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+
+  rest-settle:
+    build: .
+    command: ["npx", "tsx", "src/rest/baseRestService.ts"]
+    environment:
+      PORT: "3004"
+      ENDPOINT: "settle"
+      NAME: "settlement"
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+
+  rest-payment:
+    build: .
+    command: ["npx", "tsx", "src/rest/rest-service.ts"]
+    environment:
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+      STAGE_VALIDATE_URL: "http://rest-validation:3001/validate"
+      STAGE_ANTIFRAUD_URL: "http://rest-antifraud:3002/antifraud"
+      STAGE_AUTHORIZE_URL: "http://rest-authorization:3003/authorize"
+      STAGE_SETTLE_URL: "http://rest-settle:3004/settle"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - rest-validation
+      - rest-antifraud
+      - rest-authorization
+      - rest-settle
+
+  grpc-validation:
+    build: .
+    command: ["npx", "tsx", "src/grpc/grpc-service.ts"]
+    environment:
+      PORT: "50051"
+      NAME: "validation"
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+
+  grpc-antifraud:
+    build: .
+    command: ["npx", "tsx", "src/grpc/grpc-service.ts"]
+    environment:
+      PORT: "50052"
+      NAME: "antifraud"
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+
+  grpc-authorization:
+    build: .
+    command: ["npx", "tsx", "src/grpc/grpc-service.ts"]
+    environment:
+      PORT: "50053"
+      NAME: "authorization"
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+
+  grpc-settle:
+    build: .
+    command: ["npx", "tsx", "src/grpc/grpc-service.ts"]
+    environment:
+      PORT: "50054"
+      NAME: "settle"
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+
+  grpc-payment:
+    build: .
+    command: ["npx", "tsx", "src/grpc/payment-service.ts"]
+    environment:
+      PORT: "60000"
+      VALIDATE_ADDR: "grpc-validation:50051"
+      ANTIFRAUD_ADDR: "grpc-antifraud:50052"
+      AUTHORIZE_ADDR: "grpc-authorization:50053"
+      SETTLE_ADDR: "grpc-settle:50054"
+    ports:
+      - "60000:60000"
+    depends_on:
+      - grpc-validation
+      - grpc-antifraud
+      - grpc-authorization
+      - grpc-settle
+
+  rabbit-validation:
+    build: .
+    command: ["npx", "tsx", "src/rabbit/baseRabbitService.ts"]
+    environment:
+      QUEUE: "validate_queue"
+      NEXT_QUEUE: "antifraud_queue"
+      NAME: "validation"
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+      AMQP_URL: "amqp://rabbitmq"
+    restart: on-failure
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  rabbit-antifraud:
+    build: .
+    command: ["npx", "tsx", "src/rabbit/baseRabbitService.ts"]
+    environment:
+      QUEUE: "antifraud_queue"
+      NEXT_QUEUE: "authorize_queue"
+      NAME: "antifraud"
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+      AMQP_URL: "amqp://rabbitmq"
+    restart: on-failure
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  rabbit-authorization:
+    build: .
+    command: ["npx", "tsx", "src/rabbit/baseRabbitService.ts"]
+    environment:
+      QUEUE: "authorize_queue"
+      NEXT_QUEUE: "settle_queue"
+      NAME: "authorization"
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+      AMQP_URL: "amqp://rabbitmq"
+    restart: on-failure
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  rabbit-settle:
+    build: .
+    command: ["npx", "tsx", "src/rabbit/baseRabbitService.ts"]
+    environment:
+      QUEUE: "settle_queue"
+      NAME: "settlement"
+      STAGE_CONCURRENCY: ${STAGE_CONCURRENCY:-100}
+      AMQP_URL: "amqp://rabbitmq"
+    restart: on-failure
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  rabbit-broker:
+    build: .
+    command: ["npx", "tsx", "src/rabbit/brokerService.ts"]
+    environment:
+      PORT: "3000"
+      AMQP_URL: "amqp://rabbitmq"
+      RABBIT_INGRESS_MODE: ${RABBIT_INGRESS_MODE:-native}
+      RABBIT_INGRESS_MAX_INFLIGHT: ${RABBIT_INGRESS_MAX_INFLIGHT:-100}
+      RABBIT_INGRESS_REJECT_STATUS: ${RABBIT_INGRESS_REJECT_STATUS:-503}
+    restart: on-failure
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      rabbit-validation:
+        condition: service_started
+      rabbit-antifraud:
+        condition: service_started
+      rabbit-authorization:
+        condition: service_started
+      rabbit-settle:
+        condition: service_started
+    ports:
+      - "3005:3000"

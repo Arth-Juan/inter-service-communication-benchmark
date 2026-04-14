@@ -13,6 +13,7 @@ service PaymentStage {
 // Pedido de pagamento
 message PaymentRequest {
   string orderId = 1;
+  bytes payload = 2;
 }
 
 // Resposta

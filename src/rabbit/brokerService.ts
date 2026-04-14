@@ -3,6 +3,14 @@ import amqp from "amqplib";
 import { randomUUID } from "crypto";
 
 const steps = ["validate_queue", "antifraud_queue", "authorize_queue", "settle_queue"];
+const PORT = Number(process.env.PORT || '3000');
+const AMQP_URL = process.env.AMQP_URL || 'amqp://localhost';
+const REQUEST_TIMEOUT_MS = Number(process.env.REQUEST_TIMEOUT_MS || '5000');
+const RABBIT_INGRESS_MODE = (process.env.RABBIT_INGRESS_MODE || 'native').toLowerCase();
+const RABBIT_INGRESS_MAX_INFLIGHT = Number(
+  process.env.RABBIT_INGRESS_MAX_INFLIGHT || process.env.STAGE_CONCURRENCY || '100'
+);
+const RABBIT_INGRESS_REJECT_STATUS = Number(process.env.RABBIT_INGRESS_REJECT_STATUS || '503');
 
 const app = express();
 app.use(express.json());
@@ -13,11 +21,21 @@ let replyQueue: amqp.Replies.AssertQueue;
 
 // controle de correlação
 const pending = new Map<string, (value: { status: number }) => void>();
+let inFlightRequests = 0;
+
+function isIngressLimitedMode() {
+  return RABBIT_INGRESS_MODE === 'limited';
+}
 
 // 🔹 init AMQP UMA VEZ
 async function startAmqp() {
-  const conn = await amqp.connect("amqp://localhost");
+  const conn = await amqp.connect(AMQP_URL);
   ch = await conn.createChannel();
+
+  // Ensure all pipeline queues exist before the HTTP server starts receiving traffic.
+  for (const queue of steps) {
+    await ch.assertQueue(queue, { durable: true });
+  }
 
   replyQueue = await ch.assertQueue("", { exclusive: true });
 
@@ -42,17 +60,24 @@ async function startAmqp() {
 }
 
 // 🔹 simulatePayment correto
-async function simulatePayment() {
+async function simulatePayment(requestPayload: any) {
   const correlationId = randomUUID();
 
-  const payload = {
-    id: correlationId,
-    value: 100,
-  };
+  const payload = requestPayload && typeof requestPayload === 'object'
+    ? requestPayload
+    : { orderId: correlationId };
 
   return new Promise<{ status: number }>((resolve) => {
     // registra estado
-    pending.set(correlationId, resolve);
+    const timeout = setTimeout(() => {
+      pending.delete(correlationId);
+      resolve({ status: 504 });
+    }, REQUEST_TIMEOUT_MS);
+
+    pending.set(correlationId, (value) => {
+      clearTimeout(timeout);
+      resolve(value);
+    });
 
     // send to first step only (sequential processing)
     ch.sendToQueue(
@@ -68,7 +93,37 @@ async function simulatePayment() {
 
 // 🔹 endpoint
 app.post("/payment", async (req, res) => {
-  await simulatePayment();
+  if (isIngressLimitedMode() && inFlightRequests >= RABBIT_INGRESS_MAX_INFLIGHT) {
+    res.status(RABBIT_INGRESS_REJECT_STATUS).json({
+      status: 'busy',
+      reason: 'ingress_limit',
+      inFlight: inFlightRequests,
+      maxInFlight: RABBIT_INGRESS_MAX_INFLIGHT,
+    });
+    return;
+  }
+
+  if (isIngressLimitedMode()) {
+    inFlightRequests += 1;
+  }
+
+  let result: { status: number };
+  try {
+    result = await simulatePayment(req.body);
+  } catch (error) {
+    res.status(500).json({ status: 'error', reason: 'broker_failure' });
+    return;
+  } finally {
+    if (isIngressLimitedMode()) {
+      inFlightRequests = Math.max(0, inFlightRequests - 1);
+    }
+  }
+
+  if (result.status !== 200) {
+    res.status(result.status).json({ status: "timeout" });
+    return;
+  }
+
   res.status(200).json({ status: "ok" });
 });
 
@@ -76,8 +131,12 @@ app.post("/payment", async (req, res) => {
 async function main() {
   await startAmqp();
 
-  app.listen(3000, () => {
-    console.log("Payment running on port 3000");
+  console.log(
+    `Rabbit broker ingress mode=${RABBIT_INGRESS_MODE}, maxInFlight=${RABBIT_INGRESS_MAX_INFLIGHT}, rejectStatus=${RABBIT_INGRESS_REJECT_STATUS}`
+  );
+
+  app.listen(PORT, () => {
+    console.log(`Payment running on port ${PORT}`);
   });
 }
 

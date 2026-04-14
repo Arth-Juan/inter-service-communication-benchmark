@@ -4,15 +4,19 @@ const QUEUE = process.env.QUEUE!;
 const NEXT_QUEUE = process.env.NEXT_QUEUE;
 const NAME = process.env.NAME || 'service';
 const STAGE_CONCURRENCY = Number(process.env.STAGE_CONCURRENCY || process.env.PREFETCH || '50');
+const AMQP_URL = process.env.AMQP_URL || 'amqp://localhost';
 
 async function start() {
-  const conn = await amqp.connect('amqp://localhost');
+  const conn = await amqp.connect(AMQP_URL);
   const channel = await conn.createChannel();
 
   // Bound in-flight messages per stage for fair protocol comparison.
   channel.prefetch(STAGE_CONCURRENCY);
 
   await channel.assertQueue(QUEUE, { durable: true });
+  if (NEXT_QUEUE) {
+    await channel.assertQueue(NEXT_QUEUE, { durable: true });
+  }
 
   console.log(`[${NAME}] listening on ${QUEUE} with stageConcurrency=${STAGE_CONCURRENCY}`);
 

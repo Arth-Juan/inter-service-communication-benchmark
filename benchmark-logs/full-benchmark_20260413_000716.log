@@ -1,0 +1,1613 @@
+[2026-04-13 00:07:16] [INFO] ==========================================
+[2026-04-13 00:07:16] [INFO] Starting Full Benchmark Suite
+[2026-04-13 00:07:16] [INFO] ==========================================
+[2026-04-13 00:07:16] [INFO] Configuration:
+[2026-04-13 00:07:16] [INFO]   VUS Levels: 200,400,800
+[2026-04-13 00:07:16] [INFO]   Repetitions per point: 1
+[2026-04-13 00:07:16] [INFO]   Stage concurrency levels: 50 100 150 10000
+[2026-04-13 00:07:16] [INFO]   Payload profile: heavy
+[2026-04-13 00:07:16] [INFO]   Skip build: false
+[2026-04-13 00:07:16] [INFO]   Log directory: ./benchmark-logs
+[2026-04-13 00:07:16] [INFO] ==========================================
+[2026-04-13 00:07:16] [INFO] Building Docker images once before test matrix...
+ Image inter-service-communication-benchmark-rabbit-antifraud Building 
+ Image inter-service-communication-benchmark-grpc-authorization Building 
+ Image inter-service-communication-benchmark-rabbit-validation Building 
+ Image inter-service-communication-benchmark-grpc-validation Building 
+ Image inter-service-communication-benchmark-rest-payment Building 
+ Image inter-service-communication-benchmark-grpc-settle Building 
+ Image inter-service-communication-benchmark-rest-settle Building 
+ Image inter-service-communication-benchmark-rabbit-authorization Building 
+ Image inter-service-communication-benchmark-grpc-antifraud Building 
+ Image inter-service-communication-benchmark-rabbit-settle Building 
+ Image inter-service-communication-benchmark-rest-validation Building 
+ Image inter-service-communication-benchmark-grpc-payment Building 
+ Image inter-service-communication-benchmark-rest-authorization Building 
+ Image inter-service-communication-benchmark-rabbit-broker Building 
+ Image inter-service-communication-benchmark-rest-antifraud Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 8.45kB done
+#1 DONE 0.0s
+
+#2 [rabbit-antifraud internal] load build definition from Dockerfile
+#2 DONE 0.0s
+
+#2 [rabbit-settle internal] load build definition from Dockerfile
+#2 transferring dockerfile: 177B done
+#2 DONE 0.0s
+
+#3 [rest-antifraud internal] load metadata for docker.io/library/node:20-bookworm-slim
+#3 DONE 1.1s
+
+#4 [grpc-settle internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [grpc-settle 1/5] FROM docker.io/library/node:20-bookworm-slim@sha256:f93745c153377ee2fbbdd6e24efcd03cd2e86d6ab1d8aa9916a3790c40313a55
+#5 resolve docker.io/library/node:20-bookworm-slim@sha256:f93745c153377ee2fbbdd6e24efcd03cd2e86d6ab1d8aa9916a3790c40313a55 0.0s done
+#5 DONE 0.0s
+
+#6 [rabbit-broker internal] load build context
+#6 transferring context: 1.67GB 5.0s
+#6 transferring context: 3.46GB 10.0s
+#6 transferring context: 5.21GB 15.0s
+#6 transferring context: 7.57GB 20.0s
+#6 transferring context: 7.77GB 20.6s done
+#6 DONE 20.6s
+
+#7 [rest-payment 2/5] WORKDIR /app
+#7 CACHED
+
+#8 [rest-payment 3/5] COPY package*.json ./
+#8 CACHED
+
+#9 [rest-validation 4/5] RUN npm ci
+#9 CACHED
+
+#10 [rest-validation 5/5] COPY . .
+#10 DONE 18.9s
+
+#11 [rabbit-antifraud] exporting to image
+#11 exporting layers
+#11 ...
+
+#12 [grpc-validation] exporting to image
+#12 ...
+
+#13 [rabbit-authorization] exporting to image
+#13 ...
+
+#14 [grpc-settle] exporting to image
+#14 ...
+
+#15 [grpc-authorization] exporting to image
+#15 ...
+
+#16 [rabbit-settle] exporting to image
+#16 ...
+
+#17 [rest-validation] exporting to image
+#17 ...
+
+#18 [rest-authorization] exporting to image
+#18 ...
+
+#19 [grpc-antifraud] exporting to image
+#19 ...
+
+#20 [rabbit-validation] exporting to image
+#20 ...
+
+#21 [rabbit-broker] exporting to image
+#21 ...
+
+#22 [rest-settle] exporting to image
+#22 ...
+
+#23 [rest-payment] exporting to image
+#23 ...
+
+#24 [rest-antifraud] exporting to image
+#24 ...
+
+#25 [grpc-payment] exporting to image
+#25 ...
+
+#19 [grpc-antifraud] exporting to image
+#19 exporting layers 45.7s done
+#19 exporting manifest sha256:0378596fa7d00fa2784f3ce0ca16fad02c0b5551eb1e2f92bce580e40aef7d29
+#19 exporting manifest sha256:0378596fa7d00fa2784f3ce0ca16fad02c0b5551eb1e2f92bce580e40aef7d29 0.5s done
+#19 exporting config sha256:e7e727f09357fa5ab40be520976eb414174361892061954f24f334cd9038c911
+#19 exporting config sha256:e7e727f09357fa5ab40be520976eb414174361892061954f24f334cd9038c911 0.7s done
+#19 exporting attestation manifest sha256:ac1d770eda434c9f4dc19c63ccab4d870ba56939e0f231f6666954c25fd0ac49
+#19 exporting attestation manifest sha256:ac1d770eda434c9f4dc19c63ccab4d870ba56939e0f231f6666954c25fd0ac49 1.0s done
+#19 exporting manifest list sha256:1c026e9f15e27cc9cf18fa101fde3420d002117afdec87f656dbf77be115210d
+#19 exporting manifest list sha256:1c026e9f15e27cc9cf18fa101fde3420d002117afdec87f656dbf77be115210d 0.1s done
+#19 naming to docker.io/library/inter-service-communication-benchmark-grpc-antifraud:latest
+#19 naming to docker.io/library/inter-service-communication-benchmark-grpc-antifraud:latest 0.1s done
+#19 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-antifraud:latest
+#19 ...
+
+#24 [rest-antifraud] exporting to image
+#24 exporting layers 45.8s done
+#24 exporting manifest sha256:1f6037d6f42b2837cadd5315b7c93c169ff59c4968209d3965f0834ae2811d78 0.7s done
+#24 exporting config sha256:d84b1141931aadc1750171b268e3859062d1c962e36063ef117a33445eeebaff 0.8s done
+#24 exporting attestation manifest sha256:7e39ad727805f813c10cc7b61ae2659c661ba1a5a308d656fc9f6913d51c134b 0.9s done
+#24 exporting manifest list sha256:c72cc6772e2297a82411e38e742649ee4748ac53a345e24c67b169c628c7f0c2 0.1s done
+#24 naming to docker.io/library/inter-service-communication-benchmark-rest-antifraud:latest 0.0s done
+#24 unpacking to docker.io/library/inter-service-communication-benchmark-rest-antifraud:latest
+#24 ...
+
+#14 [grpc-settle] exporting to image
+#14 exporting layers 45.7s done
+#14 exporting manifest sha256:bae12a191c326e6d2625d6a16d13f6234a56c9b249cc37ae123c3687f1fac888 0.5s done
+#14 exporting config sha256:9d1004208895b4d742721417dacaa275c44e48cc8662417248b6f241e9476bf7 0.7s done
+#14 exporting attestation manifest sha256:da3aa4858d6dfeee8e6a85c258fad870aa66660d9e82f161c5d827c95b78569b 1.0s done
+#14 exporting manifest list sha256:81a53d13d567acd843e5a46badd737707a476b422f6e01a5a5558b1c17d6568c 0.1s done
+#14 naming to docker.io/library/inter-service-communication-benchmark-grpc-settle:latest 0.0s done
+#14 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-settle:latest
+#14 ...
+
+#13 [rabbit-authorization] exporting to image
+#13 exporting layers 45.8s done
+#13 exporting manifest sha256:9894cbb4aaaf8bdac49ac304b36979d59c13870b8fdf1fcf1bc9321b2439428d 0.7s done
+#13 exporting config sha256:3a1545699c6d0405447d7976c018f681088de6011c774034593908758c07c6c0 0.9s done
+#13 exporting attestation manifest sha256:328590276db387c36e310f254c8ce8f2d4f467d7f00b804adcc1861ef10a45ab 0.8s done
+#13 exporting manifest list sha256:8f84edaaaa9d46d452a9e0c9e69a29e20a05031f352ff6aa165b5d713c57d682 0.1s done
+#13 naming to docker.io/library/inter-service-communication-benchmark-rabbit-authorization:latest 0.0s done
+#13 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-authorization:latest
+#13 ...
+
+#17 [rest-validation] exporting to image
+#17 exporting layers 45.7s done
+#17 exporting manifest sha256:b4ade1ee248b993329cb16d9ead14c9a4bfae20f8fcea8967c8e79417512cf3f 0.5s done
+#17 exporting config sha256:3ae24bdfe048aeba90cc8027617e091c6a824497f9c719df3114bbd9b0ab4502 0.7s done
+#17 exporting attestation manifest sha256:720e7eeb7652fa852bc6291eac2b846ae73ecfeb8dee8700df34d98ee5e56c8b 1.2s done
+#17 exporting manifest list sha256:73d4a515e785cdce0b7962b6be63a1fa0e74033932717356bc6c3c0152038b5f 0.1s done
+#17 naming to docker.io/library/inter-service-communication-benchmark-rest-validation:latest 0.1s done
+#17 unpacking to docker.io/library/inter-service-communication-benchmark-rest-validation:latest
+#17 ...
+
+#18 [rest-authorization] exporting to image
+#18 exporting layers 45.8s done
+#18 exporting manifest sha256:c52332673069820ff4b2d48616d0785e145ff0f993c43469540cf0a71ab7c308 0.6s done
+#18 exporting config sha256:fd0c6626748e3986e59b1b4fd4176d202c80468366459210c71e9beda2805bab 1.1s done
+#18 exporting attestation manifest sha256:e0715879a964bb91238dbe7d473f5908f17488029aa417722519a8cde4c2b527 0.7s done
+#18 exporting manifest list sha256:b4d6c9c28b5926a8b9ac55f0e0fb34bb044849276a2439eeeafb3fe6e44fe95e 0.1s done
+#18 naming to docker.io/library/inter-service-communication-benchmark-rest-authorization:latest 0.0s done
+#18 unpacking to docker.io/library/inter-service-communication-benchmark-rest-authorization:latest
+#18 ...
+
+#23 [rest-payment] exporting to image
+#23 exporting layers 45.7s done
+#23 exporting manifest sha256:d96477345612fe36d5d8f08fba0b6b3ccaa44212e843437cd48b9ace60bd27ec 0.5s done
+#23 exporting config sha256:ec438c2b7b3e2472beb907a452e86a28cb23f91dc973029af94be3509653637b 0.7s done
+#23 exporting attestation manifest sha256:0b23469b6dd14ef25d35bca4d1289f5a7036011329fca91012cc2880e74b7786 1.0s done
+#23 exporting manifest list sha256:77e615a538816640f074082369a6a1a9b7bc7f634713dc9924848dc424d7198e 0.1s done
+#23 naming to docker.io/library/inter-service-communication-benchmark-rest-payment:latest 0.0s done
+#23 unpacking to docker.io/library/inter-service-communication-benchmark-rest-payment:latest
+#23 ...
+
+#11 [rabbit-antifraud] exporting to image
+#11 exporting layers 45.8s done
+#11 exporting manifest sha256:72d5dde169ded52ca3c07aaef2bff6363da7d3805ad66f3c149c65e8b9513b55 0.7s done
+#11 exporting config sha256:e4cbb99adcd9da4494813c0087b72e312df6492deb9aeca8757d4e619bbfd718 0.8s done
+#11 exporting attestation manifest sha256:89bce7abef17c81b9f341790d270af8e8d41801c1ce03447b224757e81f98122 0.8s done
+#11 exporting manifest list sha256:55e537f1d25c5f90c00debe6727acfb5f7416fddf6e838ba602e1be87d425039 0.1s done
+#11 naming to docker.io/library/inter-service-communication-benchmark-rabbit-antifraud:latest 0.0s done
+#11 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-antifraud:latest
+#11 ...
+
+#21 [rabbit-broker] exporting to image
+#21 exporting layers 45.7s done
+#21 exporting manifest sha256:6b8a7b870849125ae46a4bcb9c3b1598d0c4af35077680c9031c742e537939a8 0.5s done
+#21 exporting config sha256:feb4294cac21d1caa37031c20d388f537f9817ed714cae56812123dcb91263c1 0.7s done
+#21 exporting attestation manifest sha256:84254c4a05cad9c3233c143f2830e171719f21cc59819fdd83e14e0cdcd66338 1.0s done
+#21 exporting manifest list sha256:93229eed6f5593d0221c4d099a3a25d19f82bb8e1bb41f3d98ffb9aa85a99c51 0.1s done
+#21 naming to docker.io/library/inter-service-communication-benchmark-rabbit-broker:latest 0.1s done
+#21 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-broker:latest
+#21 ...
+
+#15 [grpc-authorization] exporting to image
+#15 exporting layers 45.8s done
+#15 exporting manifest sha256:086911566a00aeea80ec05555186d11156ac1d77f4441db511a6658fea4e397b 0.6s done
+#15 exporting config sha256:c695125addb14ea3ac3924cdf840e1f4ff913caff4bd3531cf4b140922350454 1.1s done
+#15 exporting attestation manifest sha256:225ae6588b43f7433114f8ee76bc97185c00aa6fc73a94ca099dbd0bd39b0e78 0.7s done
+#15 exporting manifest list sha256:0b40ece65eaf7570046c4f065d11c05729835b18d13427462e1355fc7c720ba0 0.1s done
+#15 naming to docker.io/library/inter-service-communication-benchmark-grpc-authorization:latest 0.0s done
+#15 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-authorization:latest
+#15 ...
+
+#16 [rabbit-settle] exporting to image
+#16 exporting layers 45.7s done
+#16 exporting manifest sha256:67a0bbf89efa5ac0c412993eed2885f6b10158058985d881bb32a85fd346c92b 0.6s done
+#16 exporting config sha256:a5c4be197f6c31f919f140a854fb4857314adbc6b26d43da25debb3b114bd140 1.1s done
+#16 exporting attestation manifest sha256:856dfcbeefc9ba4ebf7bd75f78ddaa2b7f3f4dd795639616496075987ef97755 0.7s done
+#16 exporting manifest list sha256:ffaa18a8167a79bd7da50795a065bbda5fab424aa5a04ac1db32832449f0e71d 0.1s done
+#16 naming to docker.io/library/inter-service-communication-benchmark-rabbit-settle:latest 0.0s done
+#16 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-settle:latest
+#16 ...
+
+#25 [grpc-payment] exporting to image
+#25 exporting layers 45.8s done
+#25 exporting manifest sha256:dca9d8a1bb508b52dd80922e1745a68f67a1bd96dea11536cc668cb6554ce121 0.6s done
+#25 exporting config sha256:c60e5917c456aaf388c9d1c885e1803297af5ab9cf0919c20aca2c6fe3116c32 0.8s done
+#25 exporting attestation manifest sha256:3dd60ac94a0fc77795fc05fbe8c2a69386004034a004b8b82ab3354517d1b45f 0.9s done
+#25 exporting manifest list sha256:49faf21d826e44170bb79ba450f46d782c37bc9dad109892ae2cad87cf21613f 0.1s done
+#25 naming to docker.io/library/inter-service-communication-benchmark-grpc-payment:latest 0.0s done
+#25 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-payment:latest
+#25 ...
+
+#22 [rest-settle] exporting to image
+#22 exporting layers 45.7s done
+#22 exporting manifest sha256:192d2235efe7019398ba01181c03afac89a519790240a9809aff36a094cc8405 0.6s done
+#22 exporting config sha256:e17ff6b6f03a9526343965d809ab2c161c3951fc6709d3850f19fa50cfb849a4 1.0s done
+#22 exporting attestation manifest sha256:e6b321df5298dd8239f1e4c6d1f76918261f29b2d035eaa5d344fe8489cf5d35 0.8s done
+#22 exporting manifest list sha256:fd4c4e1e57764ca4ec62c4c7068b382420403e26e7428ed5f955752e24b2e4b6 0.1s done
+#22 naming to docker.io/library/inter-service-communication-benchmark-rest-settle:latest 0.0s done
+#22 unpacking to docker.io/library/inter-service-communication-benchmark-rest-settle:latest
+#22 ...
+
+#12 [grpc-validation] exporting to image
+#12 exporting layers 45.7s done
+#12 exporting manifest sha256:39de97263655bdabe6dbf99bac67e59a507b367e68527cc871c1126ca86d1e5e 0.6s done
+#12 exporting config sha256:e8746e6682aa76e7a449f7f9fbed0197f1e13e70b70947a5b3c129e2ee421e6f 1.1s done
+#12 exporting attestation manifest sha256:944dd4ff0d15db9934a232d70627c270f85fe229cdecb6d73af8d518b35afb39 0.7s done
+#12 exporting manifest list sha256:2169c8cc8e823c4c532351107e554fdf3bef857aa95a12e6654dfae3cc6ad84e 0.1s done
+#12 naming to docker.io/library/inter-service-communication-benchmark-grpc-validation:latest 0.0s done
+#12 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-validation:latest
+#12 ...
+
+#20 [rabbit-validation] exporting to image
+#20 exporting layers 45.8s done
+#20 exporting manifest sha256:554f6277b8ad82b66a6a8191d74c6230f0b6508820621b60b1f8c32138c66d8b 0.7s done
+#20 exporting config sha256:ad70ceac002fdc3af4af6e9fd57acb66dad5e3c6942d25034ad142d3e58d6e69 0.9s done
+#20 exporting attestation manifest sha256:4c200b37c6c8e32e06f4821bd31c03e3fc15a514c23a421cb7a95b5a738dc283 0.8s done
+#20 exporting manifest list sha256:813a5236a397aeb16308295d714af691633825b8cf84aedabb7cce5c93a4cc70 0.1s done
+#20 naming to docker.io/library/inter-service-communication-benchmark-rabbit-validation:latest 0.0s done
+#20 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-validation:latest
+#20 ...
+
+#17 [rest-validation] exporting to image
+#17 unpacking to docker.io/library/inter-service-communication-benchmark-rest-validation:latest 161.7s done
+#17 ...
+
+#20 [rabbit-validation] exporting to image
+#20 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-validation:latest 161.8s done
+#20 DONE 211.1s
+
+#25 [grpc-payment] exporting to image
+#25 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-payment:latest 161.6s done
+#25 DONE 211.1s
+
+#17 [rest-validation] exporting to image
+#17 DONE 211.1s
+
+#21 [rabbit-broker] exporting to image
+#21 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-broker:latest 161.7s done
+#21 DONE 211.1s
+
+#13 [rabbit-authorization] exporting to image
+#13 ...
+
+#23 [rest-payment] exporting to image
+#23 unpacking to docker.io/library/inter-service-communication-benchmark-rest-payment:latest 163.7s done
+#23 DONE 213.6s
+
+#11 [rabbit-antifraud] exporting to image
+#11 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-antifraud:latest 164.6s done
+#11 ...
+
+#12 [grpc-validation] exporting to image
+#12 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-validation:latest 164.5s done
+#12 DONE 214.0s
+
+#11 [rabbit-antifraud] exporting to image
+#11 DONE 214.0s
+
+#24 [rest-antifraud] exporting to image
+#24 unpacking to docker.io/library/inter-service-communication-benchmark-rest-antifraud:latest 164.7s done
+#24 DONE 214.1s
+
+#16 [rabbit-settle] exporting to image
+#16 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-settle:latest 165.1s done
+#16 DONE 214.6s
+
+#22 [rest-settle] exporting to image
+#22 unpacking to docker.io/library/inter-service-communication-benchmark-rest-settle:latest 165.6s done
+#22 ...
+
+#13 [rabbit-authorization] exporting to image
+#13 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-authorization:latest 165.5s done
+#13 DONE 214.9s
+
+#15 [grpc-authorization] exporting to image
+#15 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-authorization:latest 165.5s done
+#15 DONE 215.0s
+
+#22 [rest-settle] exporting to image
+#22 DONE 215.0s
+
+#19 [grpc-antifraud] exporting to image
+#19 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-antifraud:latest 166.1s done
+#19 ...
+
+#14 [grpc-settle] exporting to image
+#14 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-settle:latest 166.0s done
+#14 DONE 215.7s
+
+#18 [rest-authorization] exporting to image
+#18 unpacking to docker.io/library/inter-service-communication-benchmark-rest-authorization:latest 166.0s done
+#18 DONE 215.7s
+
+#19 [grpc-antifraud] exporting to image
+#19 DONE 215.7s
+
+#26 [rabbit-validation] resolving provenance for metadata file
+#26 ...
+
+#27 [rest-antifraud] resolving provenance for metadata file
+#27 DONE 0.1s
+
+#28 [rest-payment] resolving provenance for metadata file
+#28 DONE 0.5s
+
+#29 [grpc-authorization] resolving provenance for metadata file
+#29 DONE 1.0s
+
+#30 [grpc-validation] resolving provenance for metadata file
+#30 DONE 0.4s
+
+#31 [grpc-payment] resolving provenance for metadata file
+#31 DONE 1.7s
+
+#32 [rabbit-antifraud] resolving provenance for metadata file
+#32 DONE 0.2s
+
+#33 [rabbit-authorization] resolving provenance for metadata file
+#33 DONE 1.1s
+
+#26 [rabbit-validation] resolving provenance for metadata file
+#26 DONE 1.7s
+
+#34 [grpc-settle] resolving provenance for metadata file
+#34 DONE 0.8s
+
+#35 [rest-authorization] resolving provenance for metadata file
+#35 DONE 0.7s
+
+#36 [grpc-antifraud] resolving provenance for metadata file
+#36 DONE 0.6s
+
+#37 [rabbit-settle] resolving provenance for metadata file
+#37 DONE 1.2s
+
+#38 [rest-settle] resolving provenance for metadata file
+#38 DONE 0.9s
+
+#39 [rest-validation] resolving provenance for metadata file
+#39 DONE 0.0s
+
+#40 [rabbit-broker] resolving provenance for metadata file
+#40 DONE 1.6s
+ Image inter-service-communication-benchmark-rabbit-antifraud Built 
+ Image inter-service-communication-benchmark-rest-payment Built 
+ Image inter-service-communication-benchmark-rabbit-broker Built 
+ Image inter-service-communication-benchmark-rest-validation Built 
+ Image inter-service-communication-benchmark-rabbit-authorization Built 
+ Image inter-service-communication-benchmark-rest-antifraud Built 
+ Image inter-service-communication-benchmark-rest-authorization Built 
+ Image inter-service-communication-benchmark-rabbit-settle Built 
+ Image inter-service-communication-benchmark-grpc-validation Built 
+ Image inter-service-communication-benchmark-rest-settle Built 
+ Image inter-service-communication-benchmark-rabbit-validation Built 
+ Image inter-service-communication-benchmark-grpc-antifraud Built 
+ Image inter-service-communication-benchmark-grpc-settle Built 
+ Image inter-service-communication-benchmark-grpc-authorization Built 
+ Image inter-service-communication-benchmark-grpc-payment Built 
+[2026-04-13 00:11:36] [INFO] ✓ Docker images built successfully
+[2026-04-13 00:11:36] [INFO] 
+[2026-04-13 00:11:36] [INFO] ==========================================
+[2026-04-13 00:11:36] [INFO] Starting stage concurrency level: 50
+[2026-04-13 00:11:36] [INFO] ==========================================
+[2026-04-13 00:11:36] [INFO] 
+[2026-04-13 00:11:36] [INFO] --- Starting REST benchmark (concurrency=50) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container inter-service-communication-benchmark-rest-validation-1 Creating 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-rest-settle-1 Creating 
+ Container inter-service-communication-benchmark-rest-authorization-1 Creating 
+ Container inter-service-communication-benchmark-rest-authorization-1 Created 
+ Container inter-service-communication-benchmark-rest-settle-1 Created 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Created 
+ Container inter-service-communication-benchmark-rest-validation-1 Created 
+ Container inter-service-communication-benchmark-rest-payment-1 Creating 
+ Container inter-service-communication-benchmark-rest-payment-1 Created 
+ Container inter-service-communication-benchmark-rest-authorization-1 Starting 
+ Container inter-service-communication-benchmark-rest-settle-1 Starting 
+ Container inter-service-communication-benchmark-rest-validation-1 Starting 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-rest-validation-1 Started 
+ Container inter-service-communication-benchmark-rest-authorization-1 Started 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Started 
+ Container inter-service-communication-benchmark-rest-settle-1 Started 
+ Container inter-service-communication-benchmark-rest-payment-1 Starting 
+ Container inter-service-communication-benchmark-rest-payment-1 Started 
+===========================================
+Running Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+===========================================
+Running Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+===========================================
+Running Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:15:02-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+===========================================
+Benchmark REST finalizado. CSV consolidado: ./results/rest/system-benchmark.csv
+[2026-04-13 00:15:13] [INFO] ✓ REST benchmark completed (concurrency=50)
+[2026-04-13 00:15:13] [INFO] Stopping REST services...
+ Container inter-service-communication-benchmark-rest-payment-1 Stopping 
+ Container inter-service-communication-benchmark-rest-payment-1 Stopped 
+ Container inter-service-communication-benchmark-rest-payment-1 Removing 
+ Container inter-service-communication-benchmark-rest-payment-1 Removed 
+ Container inter-service-communication-benchmark-rest-validation-1 Stopping 
+ Container inter-service-communication-benchmark-rest-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-rest-settle-1 Stopping 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-rest-settle-1 Stopped 
+ Container inter-service-communication-benchmark-rest-settle-1 Removing 
+ Container inter-service-communication-benchmark-rest-validation-1 Stopped 
+ Container inter-service-communication-benchmark-rest-validation-1 Removing 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-rest-settle-1 Removed 
+ Container inter-service-communication-benchmark-rest-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-rest-authorization-1 Removing 
+ Container inter-service-communication-benchmark-rest-validation-1 Removed 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-rest-authorization-1 Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-13 00:15:18] [INFO] 
+[2026-04-13 00:15:18] [INFO] --- Starting gRPC benchmark (concurrency=50) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Creating 
+ Container inter-service-communication-benchmark-grpc-validation-1 Creating 
+ Container inter-service-communication-benchmark-grpc-settle-1 Creating 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Created 
+ Container inter-service-communication-benchmark-grpc-validation-1 Created 
+ Container inter-service-communication-benchmark-grpc-settle-1 Created 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Created 
+ Container inter-service-communication-benchmark-grpc-payment-1 Creating 
+ Container inter-service-communication-benchmark-grpc-payment-1 Created 
+ Container inter-service-communication-benchmark-grpc-validation-1 Starting 
+ Container inter-service-communication-benchmark-grpc-settle-1 Starting 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Starting 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Started 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Started 
+ Container inter-service-communication-benchmark-grpc-settle-1 Started 
+ Container inter-service-communication-benchmark-grpc-validation-1 Started 
+ Container inter-service-communication-benchmark-grpc-payment-1 Starting 
+ Container inter-service-communication-benchmark-grpc-payment-1 Started 
+===========================================
+Running Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint gRPC ficar pronto em localhost:60000...
+===========================================
+Running Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint gRPC ficar pronto em localhost:60000...
+===========================================
+Running Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint gRPC ficar pronto em localhost:60000...
+===========================================
+Benchmark gRPC finalizado. CSV consolidado: ./results/grpc/system-benchmark.csv
+[2026-04-13 00:18:53] [INFO] ✓ gRPC benchmark completed (concurrency=50)
+[2026-04-13 00:18:53] [INFO] Stopping gRPC services...
+ Container inter-service-communication-benchmark-grpc-payment-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-payment-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-payment-1 Removing 
+ Container inter-service-communication-benchmark-grpc-payment-1 Removed 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-validation-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-settle-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-settle-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-settle-1 Removing 
+ Container inter-service-communication-benchmark-grpc-settle-1 Removed 
+ Container inter-service-communication-benchmark-grpc-validation-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-validation-1 Removing 
+ Container inter-service-communication-benchmark-grpc-validation-1 Removed 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Removing 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Removed 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-13 00:18:58] [INFO] 
+[2026-04-13 00:18:58] [INFO] --- Starting RabbitMQ benchmark (concurrency=50) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container bench-rabbitmq Creating 
+ Container bench-rabbitmq Created 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Created 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Created 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Created 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Created 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Created 
+ Container bench-rabbitmq Starting 
+ Container bench-rabbitmq Started 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Starting 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Started 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Started 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Started 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Started 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Starting 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Started 
+===========================================
+Running RabbitMQ Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+Endpoint Rabbit não ficou pronto em tempo hábil: http://localhost:3005/payment
+[2026-04-13 00:22:10] [ERROR] ✗ RabbitMQ benchmark failed (concurrency=50)
+[2026-04-13 00:22:10] [INFO] Stopping RabbitMQ services...
+ Container inter-service-communication-benchmark-rabbit-broker-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Removed 
+ Container bench-rabbitmq Stopping 
+ Container bench-rabbitmq Stopped 
+ Container bench-rabbitmq Removing 
+ Container bench-rabbitmq Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-13 00:22:18] [INFO] 
+[2026-04-13 00:22:18] [INFO] ==========================================
+[2026-04-13 00:22:18] [INFO] Starting stage concurrency level: 100
+[2026-04-13 00:22:18] [INFO] ==========================================
+[2026-04-13 00:22:18] [INFO] 
+[2026-04-13 00:22:18] [INFO] --- Starting REST benchmark (concurrency=100) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container inter-service-communication-benchmark-rest-settle-1 Creating 
+ Container inter-service-communication-benchmark-rest-authorization-1 Creating 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-rest-validation-1 Creating 
+ Container inter-service-communication-benchmark-rest-authorization-1 Created 
+ Container inter-service-communication-benchmark-rest-settle-1 Created 
+ Container inter-service-communication-benchmark-rest-validation-1 Created 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Created 
+ Container inter-service-communication-benchmark-rest-payment-1 Creating 
+ Container inter-service-communication-benchmark-rest-payment-1 Created 
+ Container inter-service-communication-benchmark-rest-authorization-1 Starting 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-rest-validation-1 Starting 
+ Container inter-service-communication-benchmark-rest-settle-1 Starting 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Started 
+ Container inter-service-communication-benchmark-rest-authorization-1 Started 
+ Container inter-service-communication-benchmark-rest-settle-1 Started 
+ Container inter-service-communication-benchmark-rest-validation-1 Started 
+ Container inter-service-communication-benchmark-rest-payment-1 Starting 
+ Container inter-service-communication-benchmark-rest-payment-1 Started 
+===========================================
+Running Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+===========================================
+Running Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+===========================================
+Running Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:25:39-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+===========================================
+Benchmark REST finalizado. CSV consolidado: ./results/rest/system-benchmark.csv
+[2026-04-13 00:25:51] [INFO] ✓ REST benchmark completed (concurrency=100)
+[2026-04-13 00:25:51] [INFO] Stopping REST services...
+ Container inter-service-communication-benchmark-rest-payment-1 Stopping 
+ Container inter-service-communication-benchmark-rest-payment-1 Stopped 
+ Container inter-service-communication-benchmark-rest-payment-1 Removing 
+ Container inter-service-communication-benchmark-rest-payment-1 Removed 
+ Container inter-service-communication-benchmark-rest-validation-1 Stopping 
+ Container inter-service-communication-benchmark-rest-settle-1 Stopping 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-rest-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-rest-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-rest-authorization-1 Removing 
+ Container inter-service-communication-benchmark-rest-authorization-1 Removed 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-rest-settle-1 Stopped 
+ Container inter-service-communication-benchmark-rest-settle-1 Removing 
+ Container inter-service-communication-benchmark-rest-settle-1 Removed 
+ Container inter-service-communication-benchmark-rest-validation-1 Stopped 
+ Container inter-service-communication-benchmark-rest-validation-1 Removing 
+ Container inter-service-communication-benchmark-rest-validation-1 Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-13 00:25:57] [INFO] 
+[2026-04-13 00:25:57] [INFO] --- Starting gRPC benchmark (concurrency=100) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-grpc-validation-1 Creating 
+ Container inter-service-communication-benchmark-grpc-settle-1 Creating 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Creating 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Created 
+ Container inter-service-communication-benchmark-grpc-validation-1 Created 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Created 
+ Container inter-service-communication-benchmark-grpc-settle-1 Created 
+ Container inter-service-communication-benchmark-grpc-payment-1 Creating 
+ Container inter-service-communication-benchmark-grpc-payment-1 Created 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Starting 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-grpc-validation-1 Starting 
+ Container inter-service-communication-benchmark-grpc-settle-1 Starting 
+ Container inter-service-communication-benchmark-grpc-settle-1 Started 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Started 
+ Container inter-service-communication-benchmark-grpc-validation-1 Started 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Started 
+ Container inter-service-communication-benchmark-grpc-payment-1 Starting 
+ Container inter-service-communication-benchmark-grpc-payment-1 Started 
+===========================================
+Running Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint gRPC ficar pronto em localhost:60000...
+===========================================
+Running Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint gRPC ficar pronto em localhost:60000...
+===========================================
+Running Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint gRPC ficar pronto em localhost:60000...
+===========================================
+Benchmark gRPC finalizado. CSV consolidado: ./results/grpc/system-benchmark.csv
+[2026-04-13 00:29:31] [INFO] ✓ gRPC benchmark completed (concurrency=100)
+[2026-04-13 00:29:31] [INFO] Stopping gRPC services...
+ Container inter-service-communication-benchmark-grpc-payment-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-payment-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-payment-1 Removing 
+ Container inter-service-communication-benchmark-grpc-payment-1 Removed 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-validation-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-settle-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-settle-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-settle-1 Removing 
+ Container inter-service-communication-benchmark-grpc-settle-1 Removed 
+ Container inter-service-communication-benchmark-grpc-validation-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-validation-1 Removing 
+ Container inter-service-communication-benchmark-grpc-validation-1 Removed 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Removing 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-13 00:29:36] [INFO] 
+[2026-04-13 00:29:36] [INFO] --- Starting RabbitMQ benchmark (concurrency=100) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container bench-rabbitmq Creating 
+ Container bench-rabbitmq Created 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Created 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Created 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Created 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Created 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Created 
+ Container bench-rabbitmq Starting 
+ Container bench-rabbitmq Started 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Started 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Started 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Started 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Started 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Starting 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Started 
+===========================================
+Running RabbitMQ Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+===========================================
+Running RabbitMQ Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+===========================================
+Running RabbitMQ Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+===========================================
+Benchmark Rabbit finalizado. CSV: ./results/rabbit/system-benchmark.csv
+[2026-04-13 00:33:20] [INFO] ✓ RabbitMQ benchmark completed (concurrency=100)
+[2026-04-13 00:33:20] [INFO] Stopping RabbitMQ services...
+ Container inter-service-communication-benchmark-rabbit-broker-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Removed 
+ Container bench-rabbitmq Stopping 
+ Container bench-rabbitmq Stopped 
+ Container bench-rabbitmq Removing 
+ Container bench-rabbitmq Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-13 00:33:26] [INFO] 
+[2026-04-13 00:33:26] [INFO] ==========================================
+[2026-04-13 00:33:26] [INFO] Starting stage concurrency level: 150
+[2026-04-13 00:33:26] [INFO] ==========================================
+[2026-04-13 00:33:26] [INFO] 
+[2026-04-13 00:33:26] [INFO] --- Starting REST benchmark (concurrency=150) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-rest-settle-1 Creating 
+ Container inter-service-communication-benchmark-rest-authorization-1 Creating 
+ Container inter-service-communication-benchmark-rest-validation-1 Creating 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Created 
+ Container inter-service-communication-benchmark-rest-settle-1 Created 
+ Container inter-service-communication-benchmark-rest-authorization-1 Created 
+ Container inter-service-communication-benchmark-rest-validation-1 Created 
+ Container inter-service-communication-benchmark-rest-payment-1 Creating 
+ Container inter-service-communication-benchmark-rest-payment-1 Created 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-rest-settle-1 Starting 
+ Container inter-service-communication-benchmark-rest-authorization-1 Starting 
+ Container inter-service-communication-benchmark-rest-validation-1 Starting 
+ Container inter-service-communication-benchmark-rest-validation-1 Started 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Started 
+ Container inter-service-communication-benchmark-rest-settle-1 Started 
+ Container inter-service-communication-benchmark-rest-authorization-1 Started 
+ Container inter-service-communication-benchmark-rest-payment-1 Starting 
+ Container inter-service-communication-benchmark-rest-payment-1 Started 
+===========================================
+Running Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+===========================================
+Running Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+===========================================
+Running Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:36:47-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+===========================================
+Benchmark REST finalizado. CSV consolidado: ./results/rest/system-benchmark.csv
+[2026-04-13 00:37:00] [INFO] ✓ REST benchmark completed (concurrency=150)
+[2026-04-13 00:37:00] [INFO] Stopping REST services...
+ Container inter-service-communication-benchmark-rest-payment-1 Stopping 
+ Container inter-service-communication-benchmark-rest-payment-1 Stopped 
+ Container inter-service-communication-benchmark-rest-payment-1 Removing 
+ Container inter-service-communication-benchmark-rest-payment-1 Removed 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-rest-settle-1 Stopping 
+ Container inter-service-communication-benchmark-rest-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-rest-validation-1 Stopping 
+ Container inter-service-communication-benchmark-rest-settle-1 Stopped 
+ Container inter-service-communication-benchmark-rest-settle-1 Removing 
+ Container inter-service-communication-benchmark-rest-settle-1 Removed 
+ Container inter-service-communication-benchmark-rest-validation-1 Stopped 
+ Container inter-service-communication-benchmark-rest-validation-1 Removing 
+ Container inter-service-communication-benchmark-rest-validation-1 Removed 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-rest-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-rest-authorization-1 Removing 
+ Container inter-service-communication-benchmark-rest-authorization-1 Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-13 00:37:06] [INFO] 
+[2026-04-13 00:37:06] [INFO] --- Starting gRPC benchmark (concurrency=150) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Creating 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-grpc-settle-1 Creating 
+ Container inter-service-communication-benchmark-grpc-validation-1 Creating 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Created 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Created 
+ Container inter-service-communication-benchmark-grpc-validation-1 Created 
+ Container inter-service-communication-benchmark-grpc-settle-1 Created 
+ Container inter-service-communication-benchmark-grpc-payment-1 Creating 
+ Container inter-service-communication-benchmark-grpc-payment-1 Created 
+ Container inter-service-communication-benchmark-grpc-settle-1 Starting 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Starting 
+ Container inter-service-communication-benchmark-grpc-validation-1 Starting 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Started 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Started 
+ Container inter-service-communication-benchmark-grpc-validation-1 Started 
+ Container inter-service-communication-benchmark-grpc-settle-1 Started 
+ Container inter-service-communication-benchmark-grpc-payment-1 Starting 
+ Container inter-service-communication-benchmark-grpc-payment-1 Started 
+===========================================
+Running Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint gRPC ficar pronto em localhost:60000...
+===========================================
+Running Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint gRPC ficar pronto em localhost:60000...
+===========================================
+Running Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint gRPC ficar pronto em localhost:60000...
+===========================================
+Benchmark gRPC finalizado. CSV consolidado: ./results/grpc/system-benchmark.csv
+[2026-04-13 00:40:36] [INFO] ✓ gRPC benchmark completed (concurrency=150)
+[2026-04-13 00:40:36] [INFO] Stopping gRPC services...
+ Container inter-service-communication-benchmark-grpc-payment-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-payment-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-payment-1 Removing 
+ Container inter-service-communication-benchmark-grpc-payment-1 Removed 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-settle-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-validation-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-grpc-settle-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-settle-1 Removing 
+ Container inter-service-communication-benchmark-grpc-settle-1 Removed 
+ Container inter-service-communication-benchmark-grpc-validation-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-validation-1 Removing 
+ Container inter-service-communication-benchmark-grpc-validation-1 Removed 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Removing 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-13 00:40:42] [INFO] 
+[2026-04-13 00:40:42] [INFO] --- Starting RabbitMQ benchmark (concurrency=150) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container bench-rabbitmq Creating 
+ Container bench-rabbitmq Created 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Created 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Created 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Created 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Created 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Created 
+ Container bench-rabbitmq Starting 
+ Container bench-rabbitmq Started 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Started 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Started 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Started 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Started 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Starting 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Started 
+===========================================
+Running RabbitMQ Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+===========================================
+Running RabbitMQ Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+===========================================
+Running RabbitMQ Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+===========================================
+Benchmark Rabbit finalizado. CSV: ./results/rabbit/system-benchmark.csv
+[2026-04-13 00:44:21] [INFO] ✓ RabbitMQ benchmark completed (concurrency=150)
+[2026-04-13 00:44:21] [INFO] Stopping RabbitMQ services...
+ Container inter-service-communication-benchmark-rabbit-broker-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Removed 
+ Container bench-rabbitmq Stopping 
+ Container bench-rabbitmq Stopped 
+ Container bench-rabbitmq Removing 
+ Container bench-rabbitmq Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-13 00:44:29] [INFO] 
+[2026-04-13 00:44:29] [INFO] ==========================================
+[2026-04-13 00:44:29] [INFO] Starting stage concurrency level: 10000
+[2026-04-13 00:44:29] [INFO] ==========================================
+[2026-04-13 00:44:29] [INFO] 
+[2026-04-13 00:44:29] [INFO] --- Starting REST benchmark (concurrency=10000) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container inter-service-communication-benchmark-rest-settle-1 Creating 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-rest-validation-1 Creating 
+ Container inter-service-communication-benchmark-rest-authorization-1 Creating 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Created 
+ Container inter-service-communication-benchmark-rest-settle-1 Created 
+ Container inter-service-communication-benchmark-rest-validation-1 Created 
+ Container inter-service-communication-benchmark-rest-authorization-1 Created 
+ Container inter-service-communication-benchmark-rest-payment-1 Creating 
+ Container inter-service-communication-benchmark-rest-payment-1 Created 
+ Container inter-service-communication-benchmark-rest-settle-1 Starting 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-rest-authorization-1 Starting 
+ Container inter-service-communication-benchmark-rest-validation-1 Starting 
+ Container inter-service-communication-benchmark-rest-settle-1 Started 
+ Container inter-service-communication-benchmark-rest-validation-1 Started 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Started 
+ Container inter-service-communication-benchmark-rest-authorization-1 Started 
+ Container inter-service-communication-benchmark-rest-payment-1 Starting 
+ Container inter-service-communication-benchmark-rest-payment-1 Started 
+===========================================
+Running Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+===========================================
+Running Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+===========================================
+Running Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+time="2026-04-13T00:47:50-03:00" level=warning msg="Request Failed" error="Post \"http://localhost:3000/payment\": request timeout"
+===========================================
+Benchmark REST finalizado. CSV consolidado: ./results/rest/system-benchmark.csv
+[2026-04-13 00:48:03] [INFO] ✓ REST benchmark completed (concurrency=10000)
+[2026-04-13 00:48:03] [INFO] Stopping REST services...
+ Container inter-service-communication-benchmark-rest-payment-1 Stopping 
+ Container inter-service-communication-benchmark-rest-payment-1 Stopped 
+ Container inter-service-communication-benchmark-rest-payment-1 Removing 
+ Container inter-service-communication-benchmark-rest-payment-1 Removed 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-rest-validation-1 Stopping 
+ Container inter-service-communication-benchmark-rest-settle-1 Stopping 
+ Container inter-service-communication-benchmark-rest-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-rest-settle-1 Stopped 
+ Container inter-service-communication-benchmark-rest-settle-1 Removing 
+ Container inter-service-communication-benchmark-rest-settle-1 Removed 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-rest-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-rest-authorization-1 Removing 
+ Container inter-service-communication-benchmark-rest-authorization-1 Removed 
+ Container inter-service-communication-benchmark-rest-validation-1 Stopped 
+ Container inter-service-communication-benchmark-rest-validation-1 Removing 
+ Container inter-service-communication-benchmark-rest-validation-1 Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-13 00:48:08] [INFO] 
+[2026-04-13 00:48:08] [INFO] --- Starting gRPC benchmark (concurrency=10000) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Creating 
+ Container inter-service-communication-benchmark-grpc-settle-1 Creating 
+ Container inter-service-communication-benchmark-grpc-validation-1 Creating 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-grpc-settle-1 Created 
+ Container inter-service-communication-benchmark-grpc-validation-1 Created 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Created 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Created 
+ Container inter-service-communication-benchmark-grpc-payment-1 Creating 
+ Container inter-service-communication-benchmark-grpc-payment-1 Created 
+ Container inter-service-communication-benchmark-grpc-settle-1 Starting 
+ Container inter-service-communication-benchmark-grpc-validation-1 Starting 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Starting 
+ Container inter-service-communication-benchmark-grpc-validation-1 Started 
+ Container inter-service-communication-benchmark-grpc-settle-1 Started 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Started 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Started 
+ Container inter-service-communication-benchmark-grpc-payment-1 Starting 
+Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint inter-service-communication-benchmark-grpc-payment-1 (2edbc8ae4a993b1e81148b7d6ea9595b1fbd4873a37cbe6c057bea769874fc46): failed to bind host port 0.0.0.0:60000/tcp: address already in use
+[2026-04-13 00:48:09] [ERROR] Failed to start gRPC services
+[2026-04-13 00:48:09] [INFO] 
+[2026-04-13 00:48:09] [INFO] --- Starting RabbitMQ benchmark (concurrency=10000) ---
+ Container bench-rabbitmq Creating 
+ Container bench-rabbitmq Created 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Created 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Created 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Created 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Created 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Created 
+ Container bench-rabbitmq Starting 
+ Container bench-rabbitmq Started 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Started 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Started 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Started 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Started 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Starting 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Started 
+===========================================
+Running RabbitMQ Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+===========================================
+Running RabbitMQ Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+===========================================
+Running RabbitMQ Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+===========================================
+Benchmark Rabbit finalizado. CSV: ./results/rabbit/system-benchmark.csv
+[2026-04-13 00:51:48] [INFO] ✓ RabbitMQ benchmark completed (concurrency=10000)
+[2026-04-13 00:51:48] [INFO] Stopping RabbitMQ services...
+ Container inter-service-communication-benchmark-grpc-payment-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-payment-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-payment-1 Removing 
+ Container inter-service-communication-benchmark-grpc-payment-1 Removed 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-validation-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-settle-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-settle-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-settle-1 Removing 
+ Container inter-service-communication-benchmark-grpc-settle-1 Removed 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-grpc-validation-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-validation-1 Removing 
+ Container inter-service-communication-benchmark-grpc-validation-1 Removed 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Removing 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Removed 
+ Container bench-rabbitmq Stopping 
+ Container bench-rabbitmq Stopped 
+ Container bench-rabbitmq Removing 
+ Container bench-rabbitmq Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-13 00:51:54] [INFO] 
+[2026-04-13 00:51:54] [INFO] ==========================================
+[2026-04-13 00:51:54] [INFO] Benchmark Suite Complete
+[2026-04-13 00:51:54] [INFO] ==========================================
+[2026-04-13 00:51:54] [INFO] Completed: 10 / 12 benchmarks
+[2026-04-13 00:51:54] [INFO] Full log: ./benchmark-logs/full-benchmark_20260413_000716.log
+[2026-04-13 00:51:54] [INFO] Results: ...
+[2026-04-13 00:51:54] [INFO] ==========================================
+[2026-04-13 00:51:54] [ERROR] ✗ Some benchmarks failed. Check log for details.
+[2026-04-13 00:51:54] [INFO] Cleaning up running containers...

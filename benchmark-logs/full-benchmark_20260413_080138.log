@@ -1,0 +1,50 @@
+[2026-04-13 08:01:38] [INFO] ==========================================
+[2026-04-13 08:01:38] [INFO] Starting Full Benchmark Suite
+[2026-04-13 08:01:38] [INFO] ==========================================
+[2026-04-13 08:01:38] [INFO] Configuration:
+[2026-04-13 08:01:38] [INFO]   VUS Levels: 100,200,400,800,1000
+[2026-04-13 08:01:38] [INFO]   Repetitions per point: 1
+[2026-04-13 08:01:38] [INFO]   Stage concurrency levels: 50 100 150 10000
+[2026-04-13 08:01:38] [INFO]   Payload profile: heavy
+[2026-04-13 08:01:38] [INFO]   Skip build: false
+[2026-04-13 08:01:38] [INFO]   Log directory: ./benchmark-logs
+[2026-04-13 08:01:38] [INFO] ==========================================
+[2026-04-13 08:01:38] [INFO] Building Docker images once before test matrix...
+ Image inter-service-communication-benchmark-grpc-antifraud Building 
+ Image inter-service-communication-benchmark-grpc-authorization Building 
+ Image inter-service-communication-benchmark-rest-authorization Building 
+ Image inter-service-communication-benchmark-rabbit-validation Building 
+ Image inter-service-communication-benchmark-rabbit-broker Building 
+ Image inter-service-communication-benchmark-rabbit-settle Building 
+ Image inter-service-communication-benchmark-rabbit-authorization Building 
+ Image inter-service-communication-benchmark-rest-settle Building 
+ Image inter-service-communication-benchmark-rest-payment Building 
+ Image inter-service-communication-benchmark-rabbit-antifraud Building 
+ Image inter-service-communication-benchmark-grpc-payment Building 
+ Image inter-service-communication-benchmark-rest-antifraud Building 
+ Image inter-service-communication-benchmark-grpc-validation Building 
+ Image inter-service-communication-benchmark-rest-validation Building 
+ Image inter-service-communication-benchmark-grpc-settle Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 8.45kB done
+#1 DONE 0.0s
+
+#2 [grpc-authorization internal] load build definition from Dockerfile
+#2 transferring dockerfile: 177B done
+#2 DONE 0.0s
+
+#3 [rest-antifraud internal] load metadata for docker.io/library/node:20-bookworm-slim
+#3 DONE 1.4s
+
+#4 [grpc-validation internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [rest-antifraud 1/5] FROM docker.io/library/node:20-bookworm-slim@sha256:f93745c153377ee2fbbdd6e24efcd03cd2e86d6ab1d8aa9916a3790c40313a55
+#5 resolve docker.io/library/node:20-bookworm-slim@sha256:f93745c153377ee2fbbdd6e24efcd03cd2e86d6ab1d8aa9916a3790c40313a55 0.0s done
+#5 DONE 0.0s
+
+#6 [rest-validation internal] load build context
+
+[2026-04-13 08:01:40] [ERROR] Failed to build Docker images
+[2026-04-13 08:01:40] [INFO] Cleaning up running containers...

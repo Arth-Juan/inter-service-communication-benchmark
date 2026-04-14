@@ -1,0 +1,557 @@
+[2026-04-12 21:39:24] [INFO] ==========================================
+[2026-04-12 21:39:24] [INFO] Starting Full Benchmark Suite
+[2026-04-12 21:39:24] [INFO] ==========================================
+[2026-04-12 21:39:24] [INFO] Configuration:
+[2026-04-12 21:39:24] [INFO]   VUS Levels: 200,400,800
+[2026-04-12 21:39:24] [INFO]   Repetitions per point: 1
+[2026-04-12 21:39:24] [INFO]   Stage concurrency levels: 100
+[2026-04-12 21:39:24] [INFO]   Skip build: false
+[2026-04-12 21:39:24] [INFO]   Log directory: ./benchmark-logs
+[2026-04-12 21:39:24] [INFO] ==========================================
+[2026-04-12 21:39:24] [INFO] Building Docker images once before test matrix...
+ Image inter-service-communication-benchmark-rest-validation Building 
+ Image inter-service-communication-benchmark-rest-payment Building 
+ Image inter-service-communication-benchmark-grpc-payment Building 
+ Image inter-service-communication-benchmark-rabbit-broker Building 
+ Image inter-service-communication-benchmark-rabbit-antifraud Building 
+ Image inter-service-communication-benchmark-grpc-antifraud Building 
+ Image inter-service-communication-benchmark-rabbit-settle Building 
+ Image inter-service-communication-benchmark-grpc-settle Building 
+ Image inter-service-communication-benchmark-rest-antifraud Building 
+ Image inter-service-communication-benchmark-grpc-authorization Building 
+ Image inter-service-communication-benchmark-grpc-validation Building 
+ Image inter-service-communication-benchmark-rest-authorization Building 
+ Image inter-service-communication-benchmark-rabbit-validation Building 
+ Image inter-service-communication-benchmark-rest-settle Building 
+ Image inter-service-communication-benchmark-rabbit-authorization Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 8.45kB done
+#1 DONE 0.0s
+
+#2 [rabbit-authorization internal] load build definition from Dockerfile
+#2 transferring dockerfile: 177B done
+#2 DONE 0.0s
+
+#3 [rest-payment internal] load metadata for docker.io/library/node:20-bookworm-slim
+#3 DONE 1.1s
+
+#4 [grpc-settle internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [rest-payment 1/5] FROM docker.io/library/node:20-bookworm-slim@sha256:f93745c153377ee2fbbdd6e24efcd03cd2e86d6ab1d8aa9916a3790c40313a55
+#5 resolve docker.io/library/node:20-bookworm-slim@sha256:f93745c153377ee2fbbdd6e24efcd03cd2e86d6ab1d8aa9916a3790c40313a55 0.0s done
+#5 DONE 0.0s
+
+#6 [grpc-payment internal] load build context
+#6 transferring context: 845.27kB 0.4s done
+#6 DONE 0.4s
+
+#7 [rabbit-authorization 2/5] WORKDIR /app
+#7 CACHED
+
+#8 [rabbit-authorization 3/5] COPY package*.json ./
+#8 CACHED
+
+#9 [rabbit-authorization 4/5] RUN npm ci
+#9 CACHED
+
+#10 [rabbit-authorization 5/5] COPY . .
+#10 DONE 2.4s
+
+#11 [rabbit-settle] exporting to image
+#11 exporting layers
+#11 ...
+
+#12 [rest-authorization] exporting to image
+#12 exporting layers 4.8s done
+#12 exporting manifest sha256:a719db3757fbc1e651e37657a0f40f79ae7d0a15a09378ccd349a6a79d24ab6a
+#12 ...
+
+#11 [rabbit-settle] exporting to image
+#11 exporting layers 4.8s done
+#11 exporting manifest sha256:e25de72d53a4f0a4e145da71dd618406a3b46c800146d574b1e2d99e83b78969
+#11 exporting manifest sha256:e25de72d53a4f0a4e145da71dd618406a3b46c800146d574b1e2d99e83b78969 0.1s done
+#11 exporting config sha256:94e11364f8169e816be852efb8574647114497ab8fcef8babda696ba927509c4
+#11 exporting config sha256:94e11364f8169e816be852efb8574647114497ab8fcef8babda696ba927509c4 0.1s done
+#11 exporting attestation manifest sha256:3e63aaf0cd38324b42e241b27f869aa3438d2ed7db597a7384ec0dcae005cecf
+#11 exporting attestation manifest sha256:3e63aaf0cd38324b42e241b27f869aa3438d2ed7db597a7384ec0dcae005cecf 0.3s done
+#11 exporting manifest list sha256:3ae8f377f04e2aee4ed322ee52a81d2be1367841f79bb4fca4cc2abd3b05aa2d
+#11 exporting manifest list sha256:3ae8f377f04e2aee4ed322ee52a81d2be1367841f79bb4fca4cc2abd3b05aa2d 0.1s done
+#11 naming to docker.io/library/inter-service-communication-benchmark-rabbit-settle:latest 0.0s done
+#11 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-settle:latest
+#11 ...
+
+#13 [grpc-validation] exporting to image
+#13 exporting layers 4.8s done
+#13 exporting manifest sha256:92a608563ce687488bb3e55eddf329cb7a950f47713ca88392de7e38b8f3b56a 0.1s done
+#13 exporting config sha256:6818c5a58fb3c2394b3d97d87fa1af67e9ad55da4825bc666dbcdb60aeaa3d17 0.1s done
+#13 exporting attestation manifest sha256:80c9c000d032724467b848bd8de87a5301a3af53f9ecc7ba5cbc3388153bce7b 0.3s done
+#13 exporting manifest list sha256:a7ff10376b0e80034e387559304dd9d43413772a396ecc3c3204d50a055df7c3 0.1s done
+#13 naming to docker.io/library/inter-service-communication-benchmark-grpc-validation:latest 0.0s done
+#13 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-validation:latest
+#13 ...
+
+#14 [rabbit-antifraud] exporting to image
+#14 exporting layers 4.8s done
+#14 exporting manifest sha256:5b2813bb46ab9864f42aea2113aad16fa4482d5526c0841b49fb33f82ab498a9 0.1s done
+#14 exporting config sha256:dc336beaee7e9080c6e74af7ea655e90aca6a9322f5e6fdbd9b46a2867eacd38 0.1s done
+#14 exporting attestation manifest sha256:58481c413ee61885c53497faffbc7a8ab340e14dd74eb30acb412089494ffe8f 0.3s done
+#14 exporting manifest list sha256:841abdf43438ad639d352c57c770670f1be5d5a5a24cc14ca348639e6aec2b33 0.1s done
+#14 naming to docker.io/library/inter-service-communication-benchmark-rabbit-antifraud:latest 0.0s done
+#14 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-antifraud:latest
+#14 ...
+
+#15 [grpc-payment] exporting to image
+#15 exporting layers 4.8s done
+#15 exporting manifest sha256:5a45fd5fa4ddbc0d6d141430fca72304239ce730184e0b1e1ec4f0973bfe1849 0.1s done
+#15 exporting config sha256:70f01ecaa8e449bc1614b3f7e9340fecff351fbea968e2fd32f2bb97cf8c886b 0.1s done
+#15 exporting attestation manifest sha256:b8655ca29c8f9edb7bf4aeb9211818843a5fe58ddcfdac8f27403a42337aacd9 0.3s done
+#15 exporting manifest list sha256:ed30e9d5b4a5a7c54c42e1ca7941ddc9ca4acc791429f1c0a9874c32c06f887f 0.1s done
+#15 naming to docker.io/library/inter-service-communication-benchmark-grpc-payment:latest 0.0s done
+#15 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-payment:latest
+#15 ...
+
+#16 [rest-antifraud] exporting to image
+#16 exporting layers 4.8s done
+#16 exporting manifest sha256:99f539280ccafd94a7ee151ce679529d29067480f7f1f19f8e0923a2f2146e39 0.1s done
+#16 exporting config sha256:5962d7d0756a76000f4a53dcf6a7c075bf3f28960b916c298f9f9a97eab877ff 0.1s done
+#16 exporting attestation manifest sha256:2b8e94e39b59ba77572220211917c50814e0222899605de05cf8e76cce7bd363 0.3s done
+#16 exporting manifest list sha256:8e6ecc76b139b1b62c951601811c6901bcc0aab8cc8f116f9789db73592bad3b 0.1s done
+#16 naming to docker.io/library/inter-service-communication-benchmark-rest-antifraud:latest 0.0s done
+#16 unpacking to docker.io/library/inter-service-communication-benchmark-rest-antifraud:latest
+#16 ...
+
+#17 [grpc-authorization] exporting to image
+#17 exporting layers 4.8s done
+#17 exporting manifest sha256:492889661b84fa60075b1c1930b9f88261df0ee4412624d7df5b7ea0785f5a91 0.1s done
+#17 exporting config sha256:57b3d46ad155bac65fa3dae62bfc798fc76287056a7f8150a972e5210a8b69cc 0.1s done
+#17 exporting attestation manifest sha256:0946f2fa96d371f57aab498ac4d36aad250fea316947de2a9e0cb03136ca08d8 0.3s done
+#17 exporting manifest list sha256:e7c52f944e556f0d0ec1eca38910a738ba5a1f7964cdb1adf205326ac86f0ca3 0.1s done
+#17 naming to docker.io/library/inter-service-communication-benchmark-grpc-authorization:latest 0.0s done
+#17 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-authorization:latest
+#17 ...
+
+#14 [rabbit-antifraud] exporting to image
+#14 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-antifraud:latest 4.0s done
+#14 DONE 9.6s
+
+#18 [rest-payment] exporting to image
+#18 exporting layers 4.8s done
+#18 exporting manifest sha256:1ea2ae04d065355c47be1990d1cf9348696401e24a9c29b63193a0e7836f0b59 0.1s done
+#18 exporting config sha256:f4b661ff37bc909db77c79289e06bb8316729e2b2235abea90483e791879db7b 0.1s done
+#18 exporting attestation manifest sha256:68b003b8e7220c803feecf19568978298428ca4f71ba7ebb8bb52b3d086b815e 0.3s done
+#18 exporting manifest list sha256:5369a710024933018ed2e2c7dd62fa8013e7a487b17a030cfd5336c3f34e638a 0.1s done
+#18 naming to docker.io/library/inter-service-communication-benchmark-rest-payment:latest 0.1s done
+#18 unpacking to docker.io/library/inter-service-communication-benchmark-rest-payment:latest 4.0s done
+#18 DONE 9.7s
+
+#17 [grpc-authorization] exporting to image
+#17 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-authorization:latest 4.0s done
+#17 ...
+
+#19 [rabbit-broker] exporting to image
+#19 exporting layers 4.8s done
+#19 exporting manifest sha256:123e437e37d16159e99d1440b4bb052bc208213a74b3e7feab878dff746815bf 0.1s done
+#19 exporting config sha256:5b9e1c09cb1e73b7078eedc042a9e0d6aa7983748bc979dee7de53a1e0d116cb 0.1s done
+#19 exporting attestation manifest sha256:34773b15fe20223c6e907185f631e4d07cc1d1c241374af70dafbd04e82f5834 0.3s done
+#19 exporting manifest list sha256:39730b5ef4a34625099f0544096594af23ee3ba50ea8b9f443351c804a7ce506 0.1s done
+#19 naming to docker.io/library/inter-service-communication-benchmark-rabbit-broker:latest 0.0s done
+#19 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-broker:latest
+#19 ...
+
+#16 [rest-antifraud] exporting to image
+#16 unpacking to docker.io/library/inter-service-communication-benchmark-rest-antifraud:latest 4.0s done
+#16 DONE 9.7s
+
+#17 [grpc-authorization] exporting to image
+#17 DONE 9.7s
+
+#12 [rest-authorization] exporting to image
+#12 exporting manifest sha256:a719db3757fbc1e651e37657a0f40f79ae7d0a15a09378ccd349a6a79d24ab6a 0.1s done
+#12 exporting config sha256:d02219ac8797efedf11bd4fdc439f53f1e8a7aad88c0a00852436eed66d7c502 0.1s done
+#12 exporting attestation manifest sha256:7ccb55f1e2533f44620c50025b0ec192cfec542040c068bdb7e8345118c51e0b 0.3s done
+#12 exporting manifest list sha256:745e29c1c3a2db49ffd0db689e9ba5eb2ab2e8c03b1078d9ce7e609df0099174 0.1s done
+#12 naming to docker.io/library/inter-service-communication-benchmark-rest-authorization:latest 0.0s done
+#12 unpacking to docker.io/library/inter-service-communication-benchmark-rest-authorization:latest 4.0s done
+#12 DONE 9.7s
+
+#19 [rabbit-broker] exporting to image
+#19 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-broker:latest 4.1s done
+#19 ...
+
+#20 [rabbit-authorization] exporting to image
+#20 exporting layers 4.8s done
+#20 exporting manifest sha256:debdf5ea93758f6d1e2fb9aee77d75c6a4b9de043e84fb4f1c9234f524bb9e8e 0.1s done
+#20 exporting config sha256:3987e673bc0ae8a4d1795dec1426c82febe43ed3c831744cb363f73a06934ec9 0.1s done
+#20 exporting attestation manifest sha256:51f39e0b84abf5670d64f9091312e74d1622ab52b48c4bdc730fb1d2d6cdd3c0 0.3s done
+#20 exporting manifest list sha256:fd38c5c228160da386a436a2c87ff35741c60fec8c8b5969ff61d7f0f56e30d8 0.1s done
+#20 naming to docker.io/library/inter-service-communication-benchmark-rabbit-authorization:latest 0.0s done
+#20 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-authorization:latest
+#20 ...
+
+#21 [grpc-settle] exporting to image
+#21 exporting layers 4.8s done
+#21 exporting manifest sha256:6bcb89676494323231d233a565367d97f456c3e3f2ce8206c0267c40cb47a30e 0.1s done
+#21 exporting config sha256:b372b9cfcde6561069b0951810e0a7faf68ecf9abcb6880a572c6535df659592 0.1s done
+#21 exporting attestation manifest sha256:3b44e915e5960f1fba2af9b5f1aaeeaf23fb46d649962b4debda46b83e0c4173 0.3s done
+#21 exporting manifest list sha256:4f0c2f93238e1ed4db4fdd81d49ded6908c3d6b3583f857809c2ce41de8e056d 0.1s done
+#21 naming to docker.io/library/inter-service-communication-benchmark-grpc-settle:latest 0.0s done
+#21 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-settle:latest
+#21 ...
+
+#19 [rabbit-broker] exporting to image
+#19 DONE 9.9s
+
+#21 [grpc-settle] exporting to image
+#21 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-settle:latest 4.3s done
+#21 ...
+
+#22 [rest-validation] exporting to image
+#22 exporting layers 4.8s done
+#22 exporting manifest sha256:0d40a495685cbf2c872ca1112baf9a1f71dc0f3c0ef2950ecbb760b3ddb0a400 0.1s done
+#22 exporting config sha256:935098d563ab8d76a86a9e8b327bd8cb60357b00b8e756c464d5b8cb15c896fb 0.1s done
+#22 exporting attestation manifest sha256:bdd97d3939945127c2d3579ec5d4a7a722db00f48322d8e9aede0b0127412b27 0.3s done
+#22 exporting manifest list sha256:4250b33006ee9e7f5e4868eb04c58fb3f66c3f8d386a5b91b5e76cb93deb6b80 0.1s done
+#22 naming to docker.io/library/inter-service-communication-benchmark-rest-validation:latest 0.0s done
+#22 unpacking to docker.io/library/inter-service-communication-benchmark-rest-validation:latest 4.3s done
+#22 ...
+
+#23 [rest-settle] exporting to image
+#23 exporting layers 4.8s done
+#23 exporting manifest sha256:2157f19b6cba7bc7f3dcfc32136d8127bf2609de40bcf6d71f6fcf561b7a1491 0.1s done
+#23 exporting config sha256:b9ee43dd936bc213e788329feb033095d6123f15cf2e2d869c844d9ed267543b 0.1s done
+#23 exporting attestation manifest sha256:7fd0172cd09fd6d2a161d3182d7b63040742addd27de758486de9ac9b66cd1a5 0.3s done
+#23 exporting manifest list sha256:eece30280fa4a3382721d135d219f5ad247ca4721a5c0f325ad2f59004c9f66e 0.1s done
+#23 naming to docker.io/library/inter-service-communication-benchmark-rest-settle:latest 0.0s done
+#23 unpacking to docker.io/library/inter-service-communication-benchmark-rest-settle:latest
+#23 unpacking to docker.io/library/inter-service-communication-benchmark-rest-settle:latest 4.6s done
+#23 DONE 10.2s
+
+#22 [rest-validation] exporting to image
+#22 DONE 10.2s
+
+#21 [grpc-settle] exporting to image
+#21 DONE 10.2s
+
+#13 [grpc-validation] exporting to image
+#13 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-validation:latest 4.3s done
+#13 DONE 10.2s
+
+#24 [rabbit-validation] exporting to image
+#24 exporting layers 4.8s done
+#24 exporting manifest sha256:a841ba590625783f830281cf5446917acbea6ce11ac0447b5cafc7f835ba012a 0.1s done
+#24 exporting config sha256:21a8b825c50f88dd16974d7d508056008652fc62c8ccfd0a1d67d7d2c5bef7b1 0.1s done
+#24 exporting attestation manifest sha256:a2a4782078b6f1ea4e558dc47f188cbedc786a4217e422d24873ca477f9f2872 0.3s done
+#24 exporting manifest list sha256:4d3ffa445b1c778e53b9781ce3a49a2d089aad7fb033eede9706d274d788647f 0.1s done
+#24 naming to docker.io/library/inter-service-communication-benchmark-rabbit-validation:latest 0.0s done
+#24 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-validation:latest 4.6s done
+#24 DONE 10.2s
+
+#25 [grpc-antifraud] exporting to image
+#25 exporting layers 4.8s done
+#25 exporting manifest sha256:69a9a688638fbbaa737d256ee42df5e7c6cb486ad0e9d16df98279ed2319358b 0.1s done
+#25 exporting config sha256:db3927645de7def30e11fe3a1b1b7c48e2a535d30956cc68614a32a9d14315fa 0.1s done
+#25 exporting attestation manifest sha256:7ed8500f8f12f005bef2a20d052723618e2ce17387276fe1fb6a99e854102c72 0.3s done
+#25 exporting manifest list sha256:dbeeb57aad01f61e1d8d7ea9bfe6c81559da604ffdaf7aecff1e3e1cb85b8fd7 0.1s done
+#25 naming to docker.io/library/inter-service-communication-benchmark-grpc-antifraud:latest 0.0s done
+#25 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-antifraud:latest 4.6s done
+#25 DONE 10.2s
+
+#20 [rabbit-authorization] exporting to image
+#20 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-authorization:latest 4.5s done
+#20 DONE 10.2s
+
+#11 [rabbit-settle] exporting to image
+#11 unpacking to docker.io/library/inter-service-communication-benchmark-rabbit-settle:latest 4.6s done
+#11 DONE 10.2s
+
+#15 [grpc-payment] exporting to image
+#15 unpacking to docker.io/library/inter-service-communication-benchmark-grpc-payment:latest 4.6s done
+#15 DONE 10.2s
+
+#26 [rabbit-antifraud] resolving provenance for metadata file
+#26 DONE 0.5s
+
+#27 [grpc-settle] resolving provenance for metadata file
+#27 DONE 0.3s
+
+#28 [grpc-payment] resolving provenance for metadata file
+#28 DONE 0.2s
+
+#29 [grpc-validation] resolving provenance for metadata file
+#29 DONE 0.2s
+
+#30 [rest-authorization] resolving provenance for metadata file
+#30 DONE 0.4s
+
+#31 [grpc-antifraud] resolving provenance for metadata file
+#31 DONE 0.5s
+
+#32 [rabbit-settle] resolving provenance for metadata file
+#32 DONE 0.1s
+
+#33 [grpc-authorization] resolving provenance for metadata file
+#33 DONE 0.1s
+
+#34 [rest-payment] resolving provenance for metadata file
+#34 DONE 0.5s
+
+#35 [rabbit-broker] resolving provenance for metadata file
+#35 DONE 0.4s
+
+#36 [rest-settle] resolving provenance for metadata file
+#36 DONE 0.1s
+
+#37 [rabbit-validation] resolving provenance for metadata file
+#37 DONE 0.4s
+
+#38 [rabbit-authorization] resolving provenance for metadata file
+#38 DONE 0.2s
+
+#39 [rest-validation] resolving provenance for metadata file
+#39 DONE 0.3s
+
+#40 [rest-antifraud] resolving provenance for metadata file
+#40 DONE 0.0s
+ Image inter-service-communication-benchmark-rabbit-settle Built 
+ Image inter-service-communication-benchmark-rabbit-antifraud Built 
+ Image inter-service-communication-benchmark-grpc-payment Built 
+ Image inter-service-communication-benchmark-rest-antifraud Built 
+ Image inter-service-communication-benchmark-grpc-antifraud Built 
+ Image inter-service-communication-benchmark-rest-validation Built 
+ Image inter-service-communication-benchmark-grpc-settle Built 
+ Image inter-service-communication-benchmark-rabbit-authorization Built 
+ Image inter-service-communication-benchmark-grpc-authorization Built 
+ Image inter-service-communication-benchmark-rabbit-validation Built 
+ Image inter-service-communication-benchmark-rest-payment Built 
+ Image inter-service-communication-benchmark-rest-authorization Built 
+ Image inter-service-communication-benchmark-rest-settle Built 
+ Image inter-service-communication-benchmark-grpc-validation Built 
+ Image inter-service-communication-benchmark-rabbit-broker Built 
+[2026-04-12 21:39:40] [INFO] ✓ Docker images built successfully
+[2026-04-12 21:39:40] [INFO] 
+[2026-04-12 21:39:40] [INFO] ==========================================
+[2026-04-12 21:39:40] [INFO] Starting stage concurrency level: 100
+[2026-04-12 21:39:40] [INFO] ==========================================
+[2026-04-12 21:39:40] [INFO] 
+[2026-04-12 21:39:40] [INFO] --- Starting REST benchmark (concurrency=100) ---
+ Container inter-service-communication-benchmark-rest-authorization-1 Recreate 
+ Container inter-service-communication-benchmark-rest-settle-1 Recreate 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Recreate 
+ Container inter-service-communication-benchmark-rest-validation-1 Recreate 
+ Container inter-service-communication-benchmark-rest-settle-1 Recreated 
+ Container inter-service-communication-benchmark-rest-authorization-1 Recreated 
+ Container inter-service-communication-benchmark-rest-validation-1 Recreated 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Recreated 
+ Container inter-service-communication-benchmark-rest-payment-1 Recreate 
+ Container inter-service-communication-benchmark-rest-payment-1 Recreated 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-rest-validation-1 Starting 
+ Container inter-service-communication-benchmark-rest-authorization-1 Starting 
+ Container inter-service-communication-benchmark-rest-settle-1 Starting 
+ Container inter-service-communication-benchmark-rest-authorization-1 Started 
+ Container inter-service-communication-benchmark-rest-validation-1 Started 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Started 
+ Container inter-service-communication-benchmark-rest-settle-1 Started 
+ Container inter-service-communication-benchmark-rest-payment-1 Starting 
+ Container inter-service-communication-benchmark-rest-payment-1 Started 
+===========================================
+Running Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+time="2026-04-12T21:39:52-03:00" level=warning msg="Error from API server" error="listen tcp 127.0.0.1:6565: bind: address already in use"
+===========================================
+Running Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+time="2026-04-12T21:41:00-03:00" level=warning msg="Error from API server" error="listen tcp 127.0.0.1:6565: bind: address already in use"
+===========================================
+Running Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint REST ficar pronto em http://localhost:3000/payment...
+time="2026-04-12T21:42:10-03:00" level=warning msg="Error from API server" error="listen tcp 127.0.0.1:6565: bind: address already in use"
+===========================================
+Benchmark REST finalizado. CSV consolidado: ./results/rest/system-benchmark.csv
+[2026-04-12 21:43:22] [INFO] ✓ REST benchmark completed (concurrency=100)
+[2026-04-12 21:43:22] [INFO] Stopping REST services...
+ Container inter-service-communication-benchmark-rest-payment-1 Stopping 
+ Container inter-service-communication-benchmark-rest-payment-1 Stopped 
+ Container inter-service-communication-benchmark-rest-payment-1 Removing 
+ Container inter-service-communication-benchmark-rest-payment-1 Removed 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-rest-settle-1 Stopping 
+ Container inter-service-communication-benchmark-rest-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-rest-validation-1 Stopping 
+ Container inter-service-communication-benchmark-rest-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-rest-authorization-1 Removing 
+ Container inter-service-communication-benchmark-rest-authorization-1 Removed 
+ Container inter-service-communication-benchmark-rest-validation-1 Stopped 
+ Container inter-service-communication-benchmark-rest-validation-1 Removing 
+ Container inter-service-communication-benchmark-rest-validation-1 Removed 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-rest-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-rest-settle-1 Stopped 
+ Container inter-service-communication-benchmark-rest-settle-1 Removing 
+ Container inter-service-communication-benchmark-rest-settle-1 Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-12 21:43:26] [INFO] 
+[2026-04-12 21:43:26] [INFO] --- Starting gRPC benchmark (concurrency=100) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container inter-service-communication-benchmark-grpc-settle-1 Creating 
+ Container inter-service-communication-benchmark-grpc-validation-1 Creating 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Creating 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-grpc-validation-1 Created 
+ Container inter-service-communication-benchmark-grpc-settle-1 Created 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Created 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Created 
+ Container inter-service-communication-benchmark-grpc-payment-1 Creating 
+ Container inter-service-communication-benchmark-grpc-payment-1 Created 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Starting 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Starting 
+ Container inter-service-communication-benchmark-grpc-settle-1 Starting 
+ Container inter-service-communication-benchmark-grpc-validation-1 Starting 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Started 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Started 
+ Container inter-service-communication-benchmark-grpc-validation-1 Started 
+ Container inter-service-communication-benchmark-grpc-settle-1 Started 
+ Container inter-service-communication-benchmark-grpc-payment-1 Starting 
+ Container inter-service-communication-benchmark-grpc-payment-1 Started 
+===========================================
+Running Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint gRPC ficar pronto em localhost:60000...
+time="2026-04-12T21:43:32-03:00" level=warning msg="Error from API server" error="listen tcp 127.0.0.1:6565: bind: address already in use"
+===========================================
+Running Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint gRPC ficar pronto em localhost:60000...
+time="2026-04-12T21:44:41-03:00" level=warning msg="Error from API server" error="listen tcp 127.0.0.1:6565: bind: address already in use"
+===========================================
+Running Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint gRPC ficar pronto em localhost:60000...
+time="2026-04-12T21:45:50-03:00" level=warning msg="Error from API server" error="listen tcp 127.0.0.1:6565: bind: address already in use"
+===========================================
+Benchmark gRPC finalizado. CSV consolidado: ./results/grpc/system-benchmark.csv
+[2026-04-12 21:47:01] [INFO] ✓ gRPC benchmark completed (concurrency=100)
+[2026-04-12 21:47:01] [INFO] Stopping gRPC services...
+ Container inter-service-communication-benchmark-grpc-payment-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-payment-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-payment-1 Removing 
+ Container inter-service-communication-benchmark-grpc-payment-1 Removed 
+ Container inter-service-communication-benchmark-grpc-settle-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-validation-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-grpc-validation-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-validation-1 Removing 
+ Container inter-service-communication-benchmark-grpc-validation-1 Removed 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-grpc-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-grpc-settle-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-settle-1 Removing 
+ Container inter-service-communication-benchmark-grpc-settle-1 Removed 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Removing 
+ Container inter-service-communication-benchmark-grpc-authorization-1 Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-12 21:47:07] [INFO] 
+[2026-04-12 21:47:07] [INFO] --- Starting RabbitMQ benchmark (concurrency=100) ---
+ Network inter-service-communication-benchmark_default Creating 
+ Network inter-service-communication-benchmark_default Created 
+ Container bench-rabbitmq Creating 
+ Container bench-rabbitmq Created 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Created 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Created 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Created 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Created 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Creating 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Created 
+ Container bench-rabbitmq Starting 
+ Container bench-rabbitmq Started 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Starting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Starting 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Started 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Started 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Started 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Started 
+ Container bench-rabbitmq Waiting 
+ Container bench-rabbitmq Healthy 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Starting 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Started 
+===========================================
+Running RabbitMQ Test with 200 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+time="2026-04-12T21:47:22-03:00" level=warning msg="Error from API server" error="listen tcp 127.0.0.1:6565: bind: address already in use"
+===========================================
+Running RabbitMQ Test with 400 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+time="2026-04-12T21:48:33-03:00" level=warning msg="Error from API server" error="listen tcp 127.0.0.1:6565: bind: address already in use"
+===========================================
+Running RabbitMQ Test with 800 VUs (repetition 1/1)
+===========================================
+Aguardando endpoint Rabbit ficar pronto em http://localhost:3005/payment...
+time="2026-04-12T21:49:42-03:00" level=warning msg="Error from API server" error="listen tcp 127.0.0.1:6565: bind: address already in use"
+===========================================
+Benchmark Rabbit finalizado. CSV: ./results/rabbit/system-benchmark.csv
+[2026-04-12 21:50:50] [INFO] ✓ RabbitMQ benchmark completed (concurrency=100)
+[2026-04-12 21:50:50] [INFO] Stopping RabbitMQ services...
+ Container inter-service-communication-benchmark-rabbit-broker-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-broker-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Stopping 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-settle-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-validation-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-antifraud-1 Removed 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Stopped 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Removing 
+ Container inter-service-communication-benchmark-rabbit-authorization-1 Removed 
+ Container bench-rabbitmq Stopping 
+ Container bench-rabbitmq Stopped 
+ Container bench-rabbitmq Removing 
+ Container bench-rabbitmq Removed 
+ Network inter-service-communication-benchmark_default Removing 
+ Network inter-service-communication-benchmark_default Removed 
+[2026-04-12 21:50:57] [INFO] 
+[2026-04-12 21:50:57] [INFO] ==========================================
+[2026-04-12 21:50:57] [INFO] Benchmark Suite Complete
+[2026-04-12 21:50:57] [INFO] ==========================================
+[2026-04-12 21:50:57] [INFO] Completed: 3 / 3 benchmarks
+[2026-04-12 21:50:57] [INFO] Full log: ./benchmark-logs/full-benchmark_20260412_213924.log
+[2026-04-12 21:50:57] [INFO] Results: ...
+[2026-04-12 21:50:57] [INFO] ==========================================
+[2026-04-12 21:50:57] [INFO] ✓ All benchmarks completed successfully!
+[2026-04-12 21:50:57] [INFO] Cleaning up running containers...
